@@ -1,2 +1,3 @@
 static tools
-(math)[/math.html]
+
+https://javascythe.github.io/math.html
