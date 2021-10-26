@@ -1,1 +1,2 @@
-# javascythe.github.io
+static tools
+(math)[/math.html]
