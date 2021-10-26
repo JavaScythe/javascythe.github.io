@@ -1,1 +1,38 @@
-
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>le mathinatorrrr</title>
+	</head>
+	<body>
+<script src="/math.js"></script>
+<pre>le mathinator ii</pre>
+<pre>how to maths</pre>
+<p>
+	will evalulate js <br>
+	input points:<br>
+	nested array, example points (1,2) and (3,4) of a question would be:<br>
+	[<br>
+		[1,2],<br>
+		[3,4]<br>
+	]<br>
+	input o:<br>
+	origin in form [x,y]<br>
+	functions:<br>
+	translate: trls(points,x-change,y-change)<br>
+	reflect: ref(points,axis) where axis can be 0 (y axis), 1 (x axis), 2 (y=x), yN (y=N)<br>
+	rotation: rot(points,d) rotate around 0,0 where d is 90 (90 counterclock wise) 180, 270 (90 clockwise)<br>
+	diliation: dil(points,k,o) where k is the scale factor and o is the origin of dilation
+</p>
+<textarea id="js" cols="100"></textarea><br><button id="jsb">Run</button><br>
+<textarea id="jsr" cols="100" rows="20">Console</textarea>
+<script>
+document.getElementById("jsb").addEventListener("click", function(){
+	try{
+		document.getElementById("jsr").value = eval(document.getElementById("js").value);
+	} catch (e){
+		document.getElementById("jsr").value = document.getElementById("jsr").value+"\n"+e+"\n------------";
+	}
+});
+</script>
+	</body>
+</html>
