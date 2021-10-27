@@ -74,6 +74,9 @@ function ref(c,l){
 		} else if(l[0]=="y"){
 			var d = parseInt(l.replace("y",""));
 			r.push([c[i][0], (2*d)-c[i][1]]);
+		} else if(i[0]="x"){
+			var d = parseInt(l.replace("x",""));
+			r.push([(2*d)-c[i][0]], c[i][1]);
 		}
 	}
 	return r;
