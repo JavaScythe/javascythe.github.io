@@ -9,7 +9,7 @@
 <pre>le mathinator ii</pre>
 <pre>how to maths</pre>
 <p>
-	will evalulate js <br>
+	will evalulate js<br>
 	input points:<br>
 	nested array, example points (1,2) and (3,4) of a question would be:<br>
 	[<br>
@@ -24,7 +24,8 @@
 	rotation: rot(points,d) rotate around 0,0 where d is 90 (90 counterclock wise) 180, 270 (90 clockwise)<br>
 	diliation: dil(points,k,o) where k is the scale factor and o is the origin of dilation<br>
 	area of triangle: atrig(points)<br>
-	perimiter of triangle: ptrig(points)
+	perimiter of triangle: ptrig(points)<br>
+	area of triangle based on side lengths: atrigs([a,b,c])
 </p>
 <textarea id="js" cols="100"></textarea><br><button id="jsb">Run</button><br>
 <textarea id="jsr" cols="100" rows="20">Console</textarea>
@@ -102,6 +103,10 @@
 		var ac = dist([c[0],c[2]]);
 		var bc = dist([c[1],c[2]]);
 		return(ab+ac+bc);
+	}
+	function atrigs(c){
+		const s = (c[0]+c[1]+c[2])/2;
+		return Math.sqrt(s*(s-c[0])*(s-c[1])*(s-c[2]));
 	}
 </script>
 </body>
