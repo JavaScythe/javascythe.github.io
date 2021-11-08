@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,73 +22,87 @@
 	translate: trls(points,x-change,y-change)<br>
 	reflect: ref(points,axis) where axis can be 0 (y axis), 1 (x axis), 2 (y=x), yN (y=N)<br>
 	rotation: rot(points,d) rotate around 0,0 where d is 90 (90 counterclock wise) 180, 270 (90 clockwise)<br>
-	diliation: dil(points,k,o) where k is the scale factor and o is the origin of dilation
+	diliation: dil(points,k,o) where k is the scale factor and o is the origin of dilation<br>
+	area of triangle: atrig(points)<br>
+	perimiter of triangle: ptrig(points)
 </p>
 <textarea id="js" cols="100"></textarea><br><button id="jsb">Run</button><br>
 <textarea id="jsr" cols="100" rows="20">Console</textarea>
 <script>
-document.getElementById("jsb").addEventListener("click", function(){
-	try{
-		document.getElementById("jsr").value = eval(document.getElementById("js").value);
-	} catch (e){
-		document.getElementById("jsr").value = document.getElementById("jsr").value+"\n"+e+"\n------------";
+	document.getElementById("jsb").addEventListener("click", function(){
+		try{
+			document.getElementById("jsr").value = eval(document.getElementById("js").value);
+		} catch (e){
+			document.getElementById("jsr").value = document.getElementById("jsr").value+"\n"+e+"\n------------";
+		}
+	});
+		function dil(c,k,o){
+		var r = [];
+		for(i in c){
+			r.push(
+				[(o[0]+(k*(c[i][0]-o[0]))),(o[1]+(k*(c[i][1]-o[1])))]
+			);
+		}
+		return r;
 	}
-});
-	function dil(c,k,o){
-	var r = [];
-	for(i in c){
-		r.push(
-			[(o[0]+(k*(c[i][0]-o[0]))),(o[1]+(k*(c[i][1]-o[1])))]
-		);
-	}
-	return r;
-}
-function f(n){
-	if(toString(n).indexOf("-")==-1){
-		return n-(n*2);
-	} else {
-		return n+(n*2);
-	}
-}
-function rot(c,d){
-	var r = [];
-	for(i in c){
-		if(d=90){
-			r.push([f(c[i][1]),c[i][0]]);
-		} else if(d=180){
-			r.push([f(c[i][0]),f(c[i][1])]);
-		} else if(d=270){
-			r.push([c[i][1],f(c[i][0])]);
+	function f(n){
+		if(toString(n).indexOf("-")==-1){
+			return n-(n*2);
+		} else {
+			return n+(n*2);
 		}
 	}
-	return r;
-}
-function ref(c,l){
-	var r = [];
-	for(i in c){
-		if(l==1){
-			r.push([c[i][0],f(c[i][1])]);
-		} else if(l==0) {
-			r.push([f(c[i][0]),c[i][1]]);
-		}else if(l==2){
-			r.push([c[i][1],c[i][0]]);
-		} else if(l[0]=="y"){
-			var d = parseInt(l.replace("y",""));
-			r.push([c[i][0], (2*d)-c[i][1]]);
-		} else if(l[0]="x"){
-			var d = parseInt(l.replace("x",""));
-			r.push([(2*d)-c[i][0]], c[i][1]);
+	function rot(c,d){
+		var r = [];
+		for(i in c){
+			if(d=90){
+				r.push([f(c[i][1]),c[i][0]]);
+			} else if(d=180){
+				r.push([f(c[i][0]),f(c[i][1])]);
+			} else if(d=270){
+				r.push([c[i][1],f(c[i][0])]);
+			}
 		}
+		return r;
 	}
-	return r;
-}
-function trls(c,x,y){
-	var r = [];
-	for(i in c){
-		r.push([(c[i][0]+x),(c[i][1]+y)])
+	function ref(c,l){
+		var r = [];
+		for(i in c){
+			if(l==1){
+				r.push([c[i][0],f(c[i][1])]);
+			} else if(l==0) {
+				r.push([f(c[i][0]),c[i][1]]);
+			}else if(l==2){
+				r.push([c[i][1],c[i][0]]);
+			} else if(l[0]=="y"){
+				var d = parseInt(l.replace("y",""));
+				r.push([c[i][0], (2*d)-c[i][1]]);
+			} else if(l[0]="x"){
+				var d = parseInt(l.replace("x",""));
+				r.push([(2*d)-c[i][0]], c[i][1]);
+			}
+		}
+		return r;
 	}
-	return r;
-}
+	function trls(c,x,y){
+		var r = [];
+		for(i in c){
+			r.push([(c[i][0]+x),(c[i][1]+y)])
+		}
+		return r;
+	}
+	function atrig(c){
+		return (0.5*(Math.abs((c[0][0]*(c[1][1]-c[2][1]))+(c[1][0]*(c[2][1]-c[0][1]))+(c[2][0]*(c[0][1]-c[1][1])))))
+	}
+	function dist(c){
+		return(Math.sqrt(Math.pow((c[0][0]-c[1][0]), 2) + Math.pow((c[0][1]-c[1][1]), 2)));
+	}
+	function ptrig(c){
+		var ab = dist([c[0],c[1]]);
+		var ac = dist([c[0],c[2]]);
+		var bc = dist([c[1],c[2]]);
+		return(ab+ac+bc);
+	}
 </script>
-	</body>
+</body>
 </html>
