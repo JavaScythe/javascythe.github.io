@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <style>body{background:#FFF;}</style>
+    <title>b_provide</title>
+  </head>
+  <body>
+    <script>
+        window.addEventListener('message', function (e) {
+            try{
+                document.getElementById("log").textContent = document.getElementById("log").textContent+"\ngot data"
+                e=e.data;
+                if(e.type=="exec"){
+                    eval(e.code)
+                } else {
+                    var x = window.open("")
+                    x.document.write(e.code);
+                    x.window.__files = window.__files;
+                }
+            }catch(e){
+                document.getElementById("err").textContent = e;
+            }
+        })
+    </script>
+    <pre>running just fine</pre>
+      <pre id="log">logs:</pre>
+      <pre id="err"></pre>
+  </body>
+</html>
