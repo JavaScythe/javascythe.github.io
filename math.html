@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>le mathinatorrrr</title>
+		<title>goGuardianRuntine.dll</title>
 	</head>
 	<body>
 <script src="/math.js"></script>
@@ -30,6 +31,7 @@
 <textarea id="js" cols="100"></textarea><br><button id="jsb">Run</button><br>
 <textarea id="jsr" cols="100" rows="20">Console</textarea>
 <script>
+    const pi = 3.141592653;
 	document.getElementById("jsb").addEventListener("click", function(){
 		try{
 			document.getElementById("jsr").value = eval(document.getElementById("js").value);
@@ -107,6 +109,15 @@
 	function atrigs(c){
 		const s = (c[0]+c[1]+c[2])/2;
 		return Math.sqrt(s*(s-c[0])*(s-c[1])*(s-c[2]));
+	}
+	function cfr(r){
+	    return pi*2*r;
+	}
+	function acfr(r){
+	    return pi*(r*r);
+	}
+	function ccfr(r,a){
+	    return (cfr(r)/360)*a;
 	}
 </script>
 </body>
