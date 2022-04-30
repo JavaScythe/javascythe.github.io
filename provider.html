@@ -13,9 +13,8 @@
                 if(e.type=="exec"){
                     eval(e.code)
                 } else {
-                    var x = window.open("")
-                    x.document.write(e.code);
-                    x.window.__files = window.__files;
+                    var x = window.open("");
+                    x.addEventListener('load', (function(code){x.document.write(code);x.window.__files = window.__files}).bind(e.code), false);
                 }
             }catch(e){
                 document.getElementById("err").textContent = e;
